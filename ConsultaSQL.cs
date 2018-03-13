@@ -1,18 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace RUTACRITICA
 {
     class ConsultaSQL
     {
         //Conexion a sql server
-        private SqlConnection conexion = new SqlConnection("Data Source = 10.10.50.201; Initial Catalog = RUTACRITICA; user id=sa; password=Pr0c3s0.12");
+        SqlConnection conexion = new SqlConnection("Data Source = 10.10.50.201; Initial Catalog = RUTACRITICA; user id=sa; password=Pr0c3s0.12");
         //Insert datos a bd (varchar, int, date, time)
         public bool Salidas(string ticket, int id, string fecha, string hora)
         {
@@ -24,8 +17,7 @@ namespace RUTACRITICA
             conexion.Close();
             if (n > 0)
                 return true;
-            else
-                return false;
+            return false;
         }
         public bool Entradas(string ticket, int id, string fecha, string hora)
         {
@@ -35,8 +27,7 @@ namespace RUTACRITICA
             conexion.Close();
             if (n > 0)
                 return true;
-            else
-                return false;
+            return false;
         }
     }
 }
