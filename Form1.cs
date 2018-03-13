@@ -1,11 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -19,7 +12,7 @@ namespace RUTACRITICA
         {
             InitializeComponent();
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        void timer1_Tick(object sender, EventArgs e)
         {
             //Fecha y hora actual
             tbFecha1.Text = DateTime.Now.ToString("yyyy/MM/dd");
@@ -27,7 +20,7 @@ namespace RUTACRITICA
             tbFecha2.Text = DateTime.Now.ToString("yyyy/MM/dd");
             tbHora2.Text = DateTime.Now.ToString("HH:mm:ss");
         }
-        private void btnRegistrar1_Click(object sender, EventArgs e)
+        void btnRegistrar1_Click(object sender, EventArgs e)
         {
             //Verifica campos vacios
             if (cbID1.Text.Length == 0 || tbTicket1.Text.Length == 0)
@@ -45,7 +38,7 @@ namespace RUTACRITICA
                     cn.Open();
                     //ExecuteScalar=0, no existe id
                     if (Convert.ToInt32(control.ExecuteScalar()) == 0)
-                        MessageBox.Show("El ID no exite", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("El ID no existe", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     else
                     {
                         //Verifica que no exista el ticket, ExecuteScalar=0, hace el registro
@@ -65,9 +58,9 @@ namespace RUTACRITICA
                             MessageBox.Show("Este ticket ya esta registrado", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-            } 
+            }
         }
-        private void btnRegistrar2_Click(object sender, EventArgs e)
+        void btnRegistrar2_Click(object sender, EventArgs e)
         {
             if (cbID2.Text.Length == 0 || tbTicket2.Text.Length == 0)
                 MessageBox.Show("Faltan campos por rellenar", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -83,7 +76,7 @@ namespace RUTACRITICA
                     entrada.Parameters.AddWithValue("@ticket", tbTicket2.Text);
                     cn.Open();
                     if (Convert.ToInt32(control.ExecuteScalar()) == 0)
-                        MessageBox.Show("El ID no exite", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("El ID no existe", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     else
                     {
                         //ExecuteScalar=0, no existe ticket en salidas
@@ -109,13 +102,13 @@ namespace RUTACRITICA
                 }
             }
         }
-        private void btnNuevo1_Click(object sender, EventArgs e)
+        void btnNuevo1_Click(object sender, EventArgs e)
         {
             //Limpia los campos
             cbID1.Text = "";
             tbTicket1.Text = "";
         }
-        private void btnNuevo2_Click(object sender, EventArgs e)
+        void btnNuevo2_Click(object sender, EventArgs e)
         {
             cbID2.Text = "";
             tbTicket2.Text = "";
